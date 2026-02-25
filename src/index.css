@@ -1,3 +1,4 @@
 @import "tailwindcss";
 
 /* Force class-based dark mode so system preference doesn't auto-apply dark styles */
+@custom-variant dark (&:where(.dark, .dark *));
