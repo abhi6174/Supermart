@@ -276,14 +276,14 @@ function KPICard({ title, value, sub, icon, color }) {
   };
   const { iconBg, iconText } = cfg[color] || cfg.teal;
   return (
-    <div className="group bg-white rounded-2xl p-5 border border-slate-100 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 cursor-default">
-      <div className="flex items-start justify-between">
-        <div className="min-w-0">
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">{title}</p>
-          <p className="text-3xl font-bold text-slate-900 mt-1.5 leading-none tabular-nums">{value}</p>
-          {sub && <p className="text-xs text-slate-400 mt-1.5 truncate">{sub}</p>}
+    <div className="group bg-white rounded-2xl p-3.5 sm:p-5 border border-slate-100 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0 flex-1">
+          <p className="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">{title}</p>
+          <p className="text-xl sm:text-3xl font-bold text-slate-900 mt-1 sm:mt-1.5 leading-none tabular-nums">{value}</p>
+          {sub && <p className="text-[10px] sm:text-xs text-slate-400 mt-1 sm:mt-1.5 truncate">{sub}</p>}
         </div>
-        <div className={`w-11 h-11 rounded-xl ${iconBg} flex items-center justify-center text-xl shrink-0 ml-3`}>
+        <div className={`w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl ${iconBg} flex items-center justify-center text-base sm:text-xl shrink-0`}>
           <span className={iconText}>{icon}</span>
         </div>
       </div>
