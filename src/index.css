@@ -1,4 +1,190 @@
 @import "tailwindcss";
 
-/* Force class-based dark mode so system preference doesn't auto-apply dark styles */
+/* ============================================================
+   TAILWIND V4 THEME TOKENS
+   ============================================================ */
+@theme {
+    /* Brand palette — indigo */
+    --color-brand-50: #eef2ff;
+    --color-brand-100: #e0e7ff;
+    --color-brand-200: #c7d2fe;
+    --color-brand-500: #6366f1;
+    --color-brand-600: #4f46e5;
+    --color-brand-700: #4338ca;
+    --color-brand-800: #3730a3;
+
+    /* Neutral surface */
+    --color-surface: #f8fafc;
+    /* slate-50 */
+    --color-surface-card: #ffffff;
+    --color-border: #e2e8f0;
+    /* slate-200 */
+    --color-border-faint: #f1f5f9;
+    /* slate-100 */
+
+    /* Status */
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-danger: #ef4444;
+
+    /* Typography */
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-display: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Mono", ui-monospace, monospace;
+}
+
+/* Force class-based dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+@layer base {
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        margin: 0;
+        background-color: #f8fafc;
+        color: #0f172a;
+        font-family: "Inter", system-ui, sans-serif;
+        line-height: 1.5;
+    }
+
+    /* Global focus-visible ring */
+    :focus-visible {
+        outline: 2px solid #6366f1;
+        outline-offset: 2px;
+        border-radius: 6px;
+    }
+
+    /* Thin elegant scrollbar */
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 99px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bar-grow {
+    from {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+
+    to {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+@layer utilities {
+    .animate-modal-in {
+        animation: modal-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .animate-slide-up {
+        animation: slide-up 0.28s ease-out both;
+    }
+
+    .animate-fade-in {
+        animation: fade-in 0.2s ease-out both;
+    }
+
+    .animate-bar-grow {
+        animation: bar-grow 0.5s ease-out both;
+    }
+
+    /* Text balance for headings */
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    /* Subtle inset shadow for input depth */
+    .shadow-input {
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Card depth shadow */
+    .shadow-card {
+        box-shadow:
+            0 1px 3px 0 rgba(0, 0, 0, 0.07),
+            0 1px 2px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .shadow-card-hover {
+        box-shadow:
+            0 4px 12px -2px rgba(0, 0, 0, 0.10),
+            0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Glass backdrop for top bar */
+    .glass {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+}
